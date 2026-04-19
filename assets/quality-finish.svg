@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 170" role="img" aria-labelledby="title">
+  <title id="title">Finished garment quality icon</title>
+  <rect width="240" height="170" rx="8" fill="#f3f7f4"/>
+  <path d="M81 38h78l24 24-25 24-12-13v60H94V73L82 86 57 62z" fill="#ffffff"/>
+  <path d="M81 38h78l24 24-25 24-12-13v60H94V73L82 86 57 62z" fill="none" stroke="#07813b" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M101 53c6 7 32 7 38 0" stroke="#196ec9" stroke-width="6" stroke-linecap="round"/>
+  <path d="m126 104 12 12 26-32" stroke="#f27a28" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

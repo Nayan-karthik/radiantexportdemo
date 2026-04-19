@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 170" role="img" aria-labelledby="title">
+  <title id="title">Print clarity quality icon</title>
+  <rect width="240" height="170" rx="8" fill="#eef7f1"/>
+  <rect x="46" y="35" width="148" height="100" rx="8" fill="#ffffff"/>
+  <path d="M68 60h104M68 82h86M68 104h62" stroke="#196ec9" stroke-width="8" stroke-linecap="round"/>
+  <path d="M50 135h140" stroke="#035b32" stroke-width="8" stroke-linecap="round"/>
+  <path d="M184 42l16 16-22 22-16-16z" fill="#f27a28"/>
+  <path d="M159 67l16 16-29 11z" fill="#07813b"/>
+</svg>

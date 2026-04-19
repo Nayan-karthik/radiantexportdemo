@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 100" role="img" aria-labelledby="title">
+  <title id="title">Client logo placeholder 5</title>
+  <rect width="260" height="100" rx="8" fill="#ffffff"/>
+  <path d="M78 24 106 76H50z" fill="#196ec9"/>
+  <path d="M78 38 93 68H63z" fill="#65c7df"/>
+  <text x="124" y="57" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#64706b">CLIENT 05</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 170" role="img" aria-labelledby="title">
+  <title id="title">Fabric roll quality icon</title>
+  <rect width="240" height="170" rx="8" fill="#eef7f1"/>
+  <path d="M34 116c24-36 50-54 78-54h68c19 0 34 15 34 34s-15 34-34 34H34z" fill="#ffffff"/>
+  <circle cx="178" cy="96" r="34" fill="#07813b"/>
+  <circle cx="178" cy="96" r="19" fill="#ffffff"/>
+  <path d="M42 116c26-29 48-43 72-43h48c-10 10-15 23-15 43z" fill="#65c7df"/>
+  <path d="M64 98h72M78 84h66M50 112h92" stroke="#035b32" stroke-width="5" stroke-linecap="round"/>
+</svg>
