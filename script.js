@@ -38,6 +38,12 @@ catalogueLink?.addEventListener("click", (event) => {
   downloadLink.remove();
 });
 
+// Immediately reveal hero on load to avoid layout flash
+const hero = document.querySelector(".hero");
+if (hero) {
+  hero.classList.add("is-visible");
+}
+
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -54,6 +60,33 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach((item) => observer.observe(item));
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
+}
+
+// Interactive scroll acceleration for hero marquee ticker
+const tickerTrack = document.querySelector(".hero-ticker .ticker-track");
+if (tickerTrack) {
+  let lastScrollY = window.scrollY;
+  let scrollTimeout = null;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const currentScrollY = window.scrollY;
+      const delta = Math.abs(currentScrollY - lastScrollY);
+      lastScrollY = currentScrollY;
+
+      if (delta > 3) {
+        tickerTrack.style.animationDuration = "15s";
+        if (scrollTimeout) {
+          clearTimeout(scrollTimeout);
+        }
+        scrollTimeout = setTimeout(() => {
+          tickerTrack.style.animationDuration = "32s";
+        }, 180);
+      }
+    },
+    { passive: true }
+  );
 }
 
 form?.addEventListener("submit", async (event) => {
