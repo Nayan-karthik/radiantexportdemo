@@ -62,28 +62,82 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
-// Interactive scroll acceleration for hero marquee ticker
-const tickerTrack = document.querySelector(".hero-ticker .ticker-track");
-if (tickerTrack) {
-  let lastScrollY = window.scrollY;
-  let scrollTimeout = null;
+// Continuous glitch-free marquee for hero ticker (no CSS animationDuration resets)
+const heroTicker = document.querySelector(".hero-ticker");
+const tickerTrack = heroTicker?.querySelector(".ticker-track");
+const tickerGroup = tickerTrack?.querySelector(".ticker-group");
 
-  window.addEventListener(
-    "scroll",
-    () => {
-      const currentScrollY = window.scrollY;
-      const delta = Math.abs(currentScrollY - lastScrollY);
-      lastScrollY = currentScrollY;
+if (heroTicker && tickerTrack && tickerGroup) {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const baseSpeed = 68; // pixels per second
+  let targetSpeed = baseSpeed;
+  let currentSpeed = baseSpeed;
+  let tickerOffset = 0;
+  let tickerLoopWidth = 0;
+  let lastTime = 0;
+  let isHovered = false;
+  let scrollBoostTimeout = null;
 
-      if (delta > 3) {
-        tickerTrack.style.animationDuration = "15s";
-        if (scrollTimeout) {
-          clearTimeout(scrollTimeout);
-        }
-        scrollTimeout = setTimeout(() => {
-          tickerTrack.style.animationDuration = "32s";
-        }, 180);
+  const updateTickerWidth = () => {
+    tickerLoopWidth = tickerGroup.getBoundingClientRect().width;
+  };
+
+  updateTickerWidth();
+  window.addEventListener("load", updateTickerWidth);
+  window.addEventListener("resize", updateTickerWidth);
+
+  heroTicker.addEventListener("mouseenter", () => {
+    isHovered = true;
+  });
+  heroTicker.addEventListener("mouseleave", () => {
+    isHovered = false;
+  });
+
+  const animateTicker = (timestamp) => {
+    if (!lastTime) lastTime = timestamp;
+    const delta = Math.min((timestamp - lastTime) / 1000, 0.1);
+    lastTime = timestamp;
+
+    const desired = isHovered ? 0 : baseSpeed;
+    currentSpeed += (desired - currentSpeed) * 0.12;
+
+    if (!prefersReducedMotion.matches && tickerLoopWidth > 0) {
+      tickerOffset += currentSpeed * delta;
+      if (tickerOffset >= tickerLoopWidth) {
+        tickerOffset -= tickerLoopWidth;
       }
+      tickerTrack.style.transform = `translate3d(${-tickerOffset}px, 0, 0)`;
+    }
+
+    window.requestAnimationFrame(animateTicker);
+  };
+
+  window.requestAnimationFrame(animateTicker);
+}
+
+// Subtle interactive mouse parallax for hero background waves & rings
+const heroSection = document.querySelector(".hero");
+const heroWaves = heroSection?.querySelector(".hero-waves");
+const heroRings = heroSection?.querySelectorAll(".hero-ring");
+
+if (heroSection && (heroWaves || heroRings?.length)) {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  heroSection.addEventListener(
+    "mousemove",
+    (e) => {
+      if (prefersReducedMotion.matches) return;
+      const rect = heroSection.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+      if (heroWaves) {
+        heroWaves.style.transform = `translate3d(${x * -18}px, ${y * -12}px, 0)`;
+      }
+      heroRings.forEach((ring, idx) => {
+        const factor = idx === 0 ? 14 : -12;
+        ring.style.marginLeft = `${x * factor}px`;
+        ring.style.marginTop = `${y * factor}px`;
+      });
     },
     { passive: true }
   );
@@ -146,7 +200,9 @@ if (productMarquee && productTrack && productGroup) {
     animationFrameId = window.requestAnimationFrame(tick);
   };
 
-  const rebuildProductLoop = () => {
+  let lastWindowWidth = window.innerWidth;
+
+  const rebuildProductLoop = (preserveOffset = false) => {
     if (clonedGroup) {
       clonedGroup.remove();
       clonedGroup = null;
@@ -158,13 +214,13 @@ if (productMarquee && productTrack && productGroup) {
 
     const trackGap = parseFloat(window.getComputedStyle(productTrack).columnGap || window.getComputedStyle(productTrack).gap || "0");
     loopWidth = productGroup.getBoundingClientRect().width + trackGap;
-    offset = 0;
-    productTrack.style.transform = "translate3d(0, 0, 0)";
+    offset = preserveOffset && loopWidth > 0 ? offset % loopWidth : 0;
+    productTrack.style.transform = `translate3d(${-offset}px, 0, 0)`;
     lastFrameTime = 0;
   };
 
-  const startProductLoop = () => {
-    rebuildProductLoop();
+  const startProductLoop = (preserveOffset = false) => {
+    rebuildProductLoop(preserveOffset);
 
     if (animationFrameId) {
       window.cancelAnimationFrame(animationFrameId);
@@ -173,9 +229,14 @@ if (productMarquee && productTrack && productGroup) {
     animationFrameId = window.requestAnimationFrame(tick);
   };
 
-  startProductLoop();
-  window.addEventListener("load", startProductLoop);
-  window.addEventListener("resize", startProductLoop);
+  startProductLoop(false);
+  window.addEventListener("load", () => startProductLoop(true));
+  window.addEventListener("resize", () => {
+    if (window.innerWidth !== lastWindowWidth) {
+      lastWindowWidth = window.innerWidth;
+      startProductLoop(true);
+    }
+  });
 
   window.addEventListener("beforeunload", () => {
     if (animationFrameId) {

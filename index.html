@@ -36,43 +36,47 @@
         <div class="hero-orb orb-1"></div>
         <div class="hero-orb orb-2"></div>
         <div class="hero-orb orb-3"></div>
+        <div class="hero-ring ring-1"></div>
+        <div class="hero-ring ring-2"></div>
+        <svg class="hero-waves" viewBox="0 0 1440 640" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="threadGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#07813b" stop-opacity="0" />
+              <stop offset="35%" stop-color="#07813b" stop-opacity="0.45" />
+              <stop offset="65%" stop-color="#196ec9" stop-opacity="0.45" />
+              <stop offset="100%" stop-color="#65c7df" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="threadGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#65c7df" stop-opacity="0" />
+              <stop offset="50%" stop-color="#07813b" stop-opacity="0.32" />
+              <stop offset="100%" stop-color="#196ec9" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <path class="wave-path wave-1" d="M-80,440 C240,310 520,540 840,380 C1120,240 1320,390 1520,280" stroke="url(#threadGrad1)" stroke-width="2.2" fill="none" />
+          <path class="wave-path wave-2" d="M-80,500 C280,380 580,580 900,420 C1180,290 1360,440 1520,350" stroke="url(#threadGrad2)" stroke-width="1.6" fill="none" />
+          <path class="wave-path wave-3" d="M-80,210 C220,120 560,290 880,170 C1160,70 1340,210 1520,130" stroke="url(#threadGrad1)" stroke-width="1.5" fill="none" />
+        </svg>
         <div class="hero-mesh"></div>
       </div>
 
       <div class="hero-copy">
-        <div class="hero-badge">
-          <span class="badge-pulse"></span>
-          <span>Tiruppur Apparel Manufacturer &amp; Exporter</span>
-        </div>
-
         <h1>
-          Export-ready garments built with
-          <span class="text-shimmer">quality at every touchpoint.</span>
+          <span class="hero-line hero-line-1">Export-ready garments built with</span>
+          <span class="hero-line hero-line-2 text-shimmer">quality at every touchpoint.</span>
         </h1>
 
-
+        <div class="hero-accent-line" aria-hidden="true"></div>
 
         <div class="hero-actions">
           <a class="button primary" href="#contact">Get in Touch</a>
           <a class="button secondary catalogue-link" href="assets/radiant-catalogue.pdf"
             download="radiant-catalogue.pdf" target="_blank" rel="noopener">Download Catalogue</a>
         </div>
-
-        <div class="hero-stats">
-          <div class="hero-stat-card">
-            <span class="stat-value">100%</span>
-            <span class="stat-label">Export Inspection</span>
-          </div>
-          <div class="hero-stat-card">
-            <span class="stat-value">Custom</span>
-            <span class="stat-label">GSM &amp; Color Dyes</span>
-          </div>
-          <div class="hero-stat-card">
-            <span class="stat-value">Tiruppur</span>
-            <span class="stat-label">Manufacturing Hub</span>
-          </div>
-        </div>
       </div>
+
+      <a href="#about" class="hero-scroll-cue" aria-label="Scroll to About Us">
+        <span class="scroll-cue-line"></span>
+      </a>
     </section>
 
     <!-- Continuous Scrolling Marquee Ribbon -->
@@ -122,9 +126,22 @@
               <span class="highlight-check">✓</span>
               <div>
                 <strong>Custom Garment Programs</strong>
-                <span>Institutional uniforms, sportswear jerseys, and private-label bulk apparel built to exact
-                  specifications.</span>
+                <span>Tailored polo t-shirts, shirts, and pants built to exact institutional and retail specifications.</span>
               </div>
+            </div>
+          </div>
+          <div class="about-metrics">
+            <div class="metric-item">
+              <strong>100%</strong>
+              <span>Export Inspection</span>
+            </div>
+            <div class="metric-item">
+              <strong>Custom</strong>
+              <span>GSM &amp; Color Dyes</span>
+            </div>
+            <div class="metric-item">
+              <strong>Tiruppur</strong>
+              <span>Manufacturing Hub</span>
             </div>
           </div>
           <div class="about-actions">
@@ -134,20 +151,20 @@
 
         <div class="about-gallery">
           <div class="about-card main-card">
-            <img src="assets/about-craft.jpg" alt="Garment manufacturing workshop" loading="lazy">
+            <img src="assets/about-worker.jpg" alt="Textile factory worker crafting export garments" loading="lazy">
             <div class="about-card-badge">
               <span class="badge-dot"></span>
-              <span>Crafted in Tiruppur, India</span>
+              <span>Skilled Factory Craftsmanship • Tiruppur</span>
             </div>
           </div>
           <div class="about-sub-cards">
             <div class="about-card sub-card">
-              <img src="assets/about-stitching.jpg" alt="Industrial precision garment stitching" loading="lazy">
-              <span class="card-caption">Precision Stitching</span>
+              <img src="assets/about-polo-pants.jpg" alt="Premium polo t-shirt and tailored pants" loading="lazy">
+              <span class="card-caption">Polo T-Shirts &amp; Pants</span>
             </div>
             <div class="about-card sub-card">
-              <img src="assets/about-fabric.jpg" alt="Premium textile and yarn rolls" loading="lazy">
-              <span class="card-caption">Export-Grade Fabrics</span>
+              <img src="assets/about-clothes-shirts.jpg" alt="Premium collared shirts on rack" loading="lazy">
+              <span class="card-caption">Tailored Shirts</span>
             </div>
           </div>
         </div>
@@ -189,14 +206,14 @@
               </div>
             </article>
             <article class="product-card">
-              <img src="assets/product-round-neck-crop.png" alt="Orange polo t-shirt">
+              <img src="assets/product-round-neck-crop.png" alt="Orange combed cotton polo t-shirt">
               <div>
                 <h3>Cotton Polos</h3>
                 <p>100% combed cotton pique polo references with practical GSM options.</p>
               </div>
             </article>
             <article class="product-card">
-              <img src="assets/product-drifit-crop.png" alt="Dri-Fit polo t-shirt">
+              <img src="assets/product-drifit-crop.png" alt="White and teal Dri-Fit polo t-shirt">
               <div>
                 <h3>Dri-Fit Sportswear</h3>
                 <p>100% polyester Mars fabric styles for polos, v-neck tees and sports-driven apparel.</p>
@@ -210,31 +227,31 @@
               </div>
             </article>
             <article class="product-card">
-              <img src="assets/product-cotton-polo.jpg" alt="White and red cotton polo t-shirt">
+              <img src="assets/product-school-polo-crop.png" alt="Navy, gold and white school uniform polo t-shirt">
               <div>
                 <h3>School Uniform Polos</h3>
                 <p>Catalogue-ready polos designed for repeat institutional orders and durable everyday wear.</p>
               </div>
             </article>
             <article class="product-card">
-              <img src="assets/product-blend-polo.jpg" alt="Blue blend polo t-shirt">
+              <img src="assets/product-blend-polo-crop.png" alt="Dark green and navy blend full sleeve polo t-shirt">
               <div>
                 <h3>Blend Fabric Polos</h3>
                 <p>Cotton-polyester blend options that balance structure, comfort and easy maintenance.</p>
               </div>
             </article>
             <article class="product-card">
-              <img src="assets/product-drifit.jpg" alt="Blue Dri-Fit jersey t-shirt">
+              <img src="assets/product-vneck-crop.png" alt="Teal and navy Dri-Fit V-neck performance jersey">
               <div>
                 <h3>Performance Jerseys</h3>
                 <p>Sports-focused jersey references built around breathable polyester constructions.</p>
               </div>
             </article>
             <article class="product-card">
-              <img src="assets/product-shorts.jpg" alt="Sports shorts in green and yellow">
+              <img src="assets/product-drifit-teal-crop.png" alt="Teal and navy Dri-Fit polo t-shirt">
               <div>
-                <h3>Activewear Bottoms</h3>
-                <p>Coordinated shorts and training bottoms for school, teamwear and promotional programs.</p>
+                <h3>Mars Fabric Polos</h3>
+                <p>Breathable 100% polyester Mars fabric polos tailored for teamwear and activewear programs.</p>
               </div>
             </article>
           </div>
@@ -287,7 +304,7 @@
       </div>
       <div class="client-grid" aria-label="Client logo placeholders">
         <article class="client-card">
-          <img src="assets/client-logo-01.svg" alt="Client logo placeholder 1">
+          <img class="client-logo-real" src="assets/Client 1.png" alt="Client 1 logo">
           <span>Client 01</span>
         </article>
         <article class="client-card">
